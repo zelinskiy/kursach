@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(773, 465);
             this.Name = "MainForm";
             this.Text = "Тюрьма";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 
         }
