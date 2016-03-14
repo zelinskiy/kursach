@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Kursach1
 {
-    public class Prisoner
+    public class Prisoner : Human
     {
         public int Article
         {
@@ -67,19 +67,7 @@ namespace Kursach1
             }
         }
 
-        public int Relatives
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
-        }
-
-        public int Character
+        public Cell Cell1
         {
             get
             {

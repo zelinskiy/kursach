@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Human.cs" />
     <Compile Include="Model\Cell.cs" />
     <Compile Include="Model\Prisoner.cs" />
     <Compile Include="View\MainForm.cs">

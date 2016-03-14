@@ -1,17 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Kursach1.Prisoner">
-    <Position X="0.75" Y="1.75" Width="1.5" />
+    <Position X="2.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AggAAAAAAAAAAAAAAABAAAAAEAAAAAAAAAAgAIAACAA=</HashCode>
+      <HashCode>AgAAAAAAAAAAAAAAAABAAAAAEAAAAAAAAAAggIAAAAA=</HashCode>
       <FileName>Model\Prisoner.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Cell1" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Kursach1.Cell">
-    <Position X="3.25" Y="1.5" Width="1.5" />
+    <Position X="4.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAEAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Cell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursach1.Human">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Model\Human.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
