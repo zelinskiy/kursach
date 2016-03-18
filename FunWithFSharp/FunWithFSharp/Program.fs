@@ -10,6 +10,8 @@ let rec qsort xs =
     | _ -> qsort(smaller)@[xs.Head]@qsort(larger)
 
 
+
+
 let rec reverse' (xs:List<int>) (ys:List<int>)=
     match xs with
     | [] -> ys
@@ -19,15 +21,35 @@ let reverse l = reverse' l []
 
 
 
-let rec merge a b acc =
+let rec len' xs n = 
+    match xs with
+    | [] -> n
+    | _ -> len' xs.Tail n+1
+
+let len xs = len' xs 0
+
+let rec merge' a b acc =
     match a,b with
     | [], [] ->  acc
     | [], b -> acc@reverse b
     | a, [] -> acc@reverse a
     | ha::ta, hb::tb ->
         match ha < hb with
-        | true -> merge ta b acc@[ha]
-        | false -> merge a tb acc@[hb]
+        | true -> merge' ta b acc@[ha]
+        | false -> merge' a tb acc@[hb]
+
+let merge a b = merge' a b [] |> reverse
+
+
+let rec msort xs = 
+    let mid = (len xs)/2
+    let (M, N) = List.splitAt mid xs
+    match xs with 
+    | [] -> []
+    | [a] -> [a]
+    | L -> merge (msort M) (msort N)
+
+
 
 let rec max' l acc =
     match l with
@@ -41,6 +63,9 @@ let max l = max' l l.Head
 
 
 
-let x = merge [1;3;5;7] [2;4;6;7;8;9;10;11;13] [] |> reverse
 
-let y = max [10;4;12;5;7;9;2;4;7;1]
+
+
+let x = msort [2;4;6;7;8;9;10;11;13]
+
+let y = msort [10;4;12;5;7;9;2;4;7;1]
