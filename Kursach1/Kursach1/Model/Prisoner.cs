@@ -5,78 +5,32 @@ using System.Text;
 
 namespace Kursach1
 {
-    public class Prisoner : Human
+    public class Prisoner
     {
-        public int Article
+        public int Id;
+        public string Name;
+        public int Age;
+        public int Article;
+        public int Cell;
+
+        public Prisoner() { }
+
+        public Prisoner(
+                int id,
+                string name,
+                int age,
+                int article,
+                int cell
+        )
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
+            Id = id;
+            Name = name;
+            Age = age;
+            Article = article;
+            Cell = cell;
         }
-
-        public int Sentence
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
-        }
-
-        public int ImprisonedDate
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
-        }
-
-        public int Hierarchy
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
-        }
-
-        public int Cell
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
-        }
-
-        public Cell Cell1
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
-        }
+        
     }
+
+    
 }
