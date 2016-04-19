@@ -34,34 +34,71 @@ namespace Kursach1
             PrisonersListView.GridLines = true;
             PrisonersListView.FullRowSelect = true;
 
-            
-            
+            PrisonersListView.KeyDown += new KeyEventHandler(PrisonersListView_KeyPress);
 
+            string[] cols = new string[]
+            {
+                "Номер",
+                "Фамилия",
+                "Возраст",
+                "Статья",
+                "Камера",
+                "Ост. дней",
+                "Иерархич."
+            };
+
+
+            for(int i=0; i< cols.Length; i++)
+            {
+                PrisonersListView.Columns.Add(cols[i],150);
+                SearchFieldComboBox.Items.Add(cols[i]);
+            }
+
+
+            PrisonersListView.ColumnClick += new ColumnClickEventHandler(ColumnClick);
+            SearchFieldComboBox.SelectedIndex = 0;
 
             Prisoners.Load();
-            RefreshView();
+            RefreshView(Prisoners.prisoners);
 
             
-            
-
-
 
         }
 
 
-        public void RefreshView()
+        void PrisonersListView_KeyPress(object sender,KeyEventArgs e)
+        {
+            //MessageBox.Show("Form.KeyPress: '" + e.KeyCode.ToString() + "' pressed.");
+            switch (e.KeyCode)
+            {
+                case Keys.Delete:
+                    DeleteButton_Click(null, null);
+                    break;
+                case Keys.E:
+                    EditButton_Click(null, null);
+                    break;
+
+            }
+        }
+        
+
+
+
+        public void RefreshView(List<Prisoner> ps)
         {
             PrisonersListView.Items.Clear();
-            foreach (Prisoner p in Prisoners.prisoners)
+            foreach (Prisoner p in ps)
             {
                 PrisonersListView.Items.Add(
                     new ListViewItem(new string[]
                     {
                         p.Id.ToString(),
-                        p.Name,
+                        p.SecondName,
                         p.Age.ToString(),
                         p.Article.ToString(),
-                        p.Cell.ToString()
+                        p.Cell.ToString(),
+                        p.SentenceDaysLeft.ToString(),
+                        p.Hierarchy
                     }
                     )
                 );
@@ -70,10 +107,9 @@ namespace Kursach1
             PrisonersListView.Focus();
 
             PrisonersListView.MultiSelect = false;
-
-
-
         }
+
+
 
         private void PrisonersListView_Click(object sender, EventArgs e)
         {
@@ -101,14 +137,47 @@ namespace Kursach1
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
+            if (PrisonersListView.SelectedItems.Count == 1)
+            {
+                Prisoners.Remove(PrisonersListView.SelectedItems[0].SubItems[0].Text);
+                RefreshView(Prisoners.prisoners);
+            }
             
-            Prisoners.Remove(PrisonersListView.SelectedItems[0].SubItems[0].Text);
-            RefreshView();
         }
 
         private void PrisonersListView_SelectedIndexChanged_1(object sender, EventArgs e)
         {
 
+        }
+
+
+
+        
+
+        private void ColumnClick(object o, ColumnClickEventArgs e)
+        {
+            RefreshView(Prisoners.OrderBy(e.Column.ToString()));
+        }
+
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            RefreshView(Prisoners.SearchBy(SearchFieldComboBox.SelectedIndex.ToString(), SearchTextBox.Text));
+            
+        }
+
+        private void TestDataButton_Click(object sender, EventArgs e)
+        {
+            Prisoners.Create();
+        }
+
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            if (PrisonersListView.SelectedItems.Count == 1)
+            {
+                var myForm = new EditForm(this, int.Parse(PrisonersListView.SelectedItems[0].SubItems[0].Text));
+                myForm.Show();
+            }            
         }
     }
 }

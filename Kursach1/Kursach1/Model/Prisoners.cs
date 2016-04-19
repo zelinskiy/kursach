@@ -11,6 +11,8 @@ namespace Kursach1.Model
 {
     static class Prisoners
     {
+        public static List<Prisoner> selectedPrisoners;
+        
 
         public static string PrisonersListLocation = "prisoners.json";
 
@@ -18,20 +20,17 @@ namespace Kursach1.Model
 
         public static List<Prisoner> prisoners = new List<Prisoner>();
 
+        
+
+        
+
+
         public static void Create()
         {
             int length = 10;
-            prisoners = new List<Prisoner>();
             for (int i = 0; i < length; i++)
-            {
-                Prisoner p = new Prisoner()
-                {
-                    Id = i,
-                    Name = "Name" + i,
-                    Article = i,
-                    Cell = i
-                };     
-                prisoners.Add(p);
+            {                
+                prisoners.Add(new Prisoner(generateId(), randGen));
             }
         }
 
@@ -60,6 +59,7 @@ namespace Kursach1.Model
                     prisoners = JsonConvert.DeserializeObject<List<Prisoner>>(reader.ReadLine());
                 }
             }
+            selectedPrisoners = prisoners;
             
         }
 
@@ -77,50 +77,73 @@ namespace Kursach1.Model
         }
 
         public static void Add(
-                string name,
-                string age,
+                string firstName,
+                string secondName,
+                string patronimyc,
+                DateTime birthday,
+
                 string article,
-                string cell
+                string cell,
+                string sentenceYears,
+                string sentenceMonths,
+                DateTime imprisonedDate,
+                string hierarchy
             )
         {
-            Regex ageRegex = new Regex(@"[1-9][0-9]");
-            Regex numRegex = new Regex(@"[\d]");
-
-            if (!ageRegex.IsMatch(age))
-            {
-                throw new ArgumentException("Incorrect age");
-            }
-
-            if(name == "")
-            {
-                throw new ArgumentException("Empty name");
-            }
-            if(article == "")
-            {
-                throw new ArgumentException("Empty article");
-            }
-            if (cell == "")
-            {
-                throw new ArgumentException("Empty cell");
-            }
-            if (!numRegex.IsMatch(article))
-            {
-                throw new ArgumentException("Incorrect article number");
-            }
-            if (!numRegex.IsMatch(cell))
-            {
-                throw new ArgumentException("Incorrect cell number");
-            }
-
             prisoners.Add(new Prisoner()
             {
                 Id = generateId(),
-                Name = name,
-                Age = int.Parse(age),
+                FirstName = firstName,
+                SecondName = secondName,
+                Patronymic = patronimyc,
+                Birthday = birthday,
+
                 Article = int.Parse(article),
-                Cell = int.Parse(cell)
+                Cell = int.Parse(cell),
+                Sentence = new Prisoner.sentence(int.Parse(sentenceYears), int.Parse(sentenceMonths)),
+                Imprisoned = imprisonedDate,
+                Hierarchy = hierarchy
             });
         }
+
+
+
+
+
+        public static void Replace(
+                int id,
+                string firstName,
+                string secondName,
+                string patronimyc,
+                DateTime birthday,
+
+                string article,
+                string cell,
+                string sentenceYears,
+                string sentenceMonths,
+                DateTime imprisonedDate,
+                string hierarchy
+            )
+        {
+            foreach (var p in prisoners.Where(p => p.Id == id))
+            {
+                p.FirstName = firstName;
+                p.SecondName = secondName;
+                p.Patronymic = patronimyc;
+                p.Birthday = birthday;
+            
+                p.Article = int.Parse(article);
+                p.Cell = int.Parse(cell);
+                p.Sentence = new Prisoner.sentence(int.Parse(sentenceYears), int.Parse(sentenceMonths));
+                p.Imprisoned = imprisonedDate;
+                p.Hierarchy = hierarchy;
+            }
+        }
+
+
+
+
+
 
 
         public static void Remove(string id)
@@ -153,14 +176,84 @@ namespace Kursach1.Model
                         .Select(x=>x.Article.ToString())
                         .Aggregate((i,j)=> i + " " + j)
                 );
-            sb.AppendLine("Oldest Prisoner: " + prisoners
-                    .OrderByDescending(x => x.Age).First().Name);
+            sb.AppendLine("Самый молодой заключенный: " + prisoners
+                    .OrderByDescending(x => x.Age).First().Id);
 
-            sb.AppendLine("Youngest Prisoner: " + prisoners
-                    .OrderBy(x => x.Age).First().Name);
+            sb.AppendLine("Самый старый заключенный: " + prisoners
+                    .OrderBy(x => x.Age).First().Id);
+
+            sb.AppendLine("Будут отпущены в этом месяце:");
+            foreach(Prisoner p in prisoners.Where(p=>p.SentenceDaysLeft < 30 && p.SentenceDaysLeft >=0).OrderBy(p=>p.SentenceDaysLeft))
+            {
+                sb.AppendLine(p.FirstName + " " + p.SecondName + " " + p.WillBeFreeDate.ToString("yy/mm/dd"));
+            }
 
 
             return sb.ToString();
+        }
+
+
+
+        public static List<Prisoner> SearchBy(string field, string pattern)
+        {
+            switch (field)
+            {
+                case "":
+                    selectedPrisoners = prisoners;
+                    break;
+                case "0":
+                    selectedPrisoners = prisoners.Where(p=>p.Id.ToString().Contains(pattern)).ToList();
+                    break;
+                case "1":
+                    selectedPrisoners = prisoners.Where(p => p.FirstName.ToString().Contains(pattern)).ToList();
+                    break;
+                case "2":
+                    selectedPrisoners = prisoners.Where(p => p.Age.ToString().Contains(pattern)).ToList();
+                    break;
+                case "3":
+                    selectedPrisoners = prisoners.Where(p => p.Article.ToString().Contains(pattern)).ToList();
+                    break;
+                case "4":
+                    selectedPrisoners = prisoners.Where(p => p.Cell.ToString().Contains(pattern)).ToList();
+                    break;
+                case "5":
+                    return selectedPrisoners.Where(p => p.SentenceDaysLeft.ToString().Contains(pattern)).ToList();
+                case "6":
+                    return selectedPrisoners.Where(p => p.Hierarchy.Contains(pattern)).ToList();
+                default:
+                    throw new ArgumentException("incorrect searchby field");
+            }
+            return selectedPrisoners;
+        }
+
+
+        public static List<Prisoner> OrderBy(string field)
+        {
+            if(selectedPrisoners == null)
+            {
+                selectedPrisoners = prisoners;
+            }
+            switch (field)
+            {
+                case "":
+                    return selectedPrisoners;
+                case "0":
+                    return selectedPrisoners.OrderByDescending(p => p.Id).ToList();
+                case "1":
+                    return selectedPrisoners.OrderByDescending(p => p.SecondName).ToList();
+                case "2":
+                    return selectedPrisoners.OrderByDescending(p => p.Age).ToList();
+                case "3":
+                    return selectedPrisoners.OrderByDescending(p => p.Article).ToList();
+                case "4":
+                    return selectedPrisoners.OrderByDescending(p => p.Cell).ToList();
+                case "5":
+                    return selectedPrisoners.OrderByDescending(p => p.SentenceDaysLeft).ToList();
+                case "6":
+                    return selectedPrisoners.OrderByDescending(p => p.Hierarchy).ToList();
+                default:
+                    throw new ArgumentException("incorrect orderby field");
+            }
         }
     }
 }
