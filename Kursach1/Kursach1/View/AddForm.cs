@@ -7,7 +7,7 @@ namespace Kursach1.View
 {
     public partial class AddForm : Form
     {
-
+        public Prisoners MyPrison;
         public MainForm parent;
 
         public AddForm() { }
@@ -16,6 +16,7 @@ namespace Kursach1.View
         public AddForm(MainForm parent)
         {
             this.parent = parent;
+            MyPrison = parent.MyPrison;
             InitializeComponent();
         }
 
@@ -71,8 +72,8 @@ namespace Kursach1.View
 
         protected virtual void AddButton_Click(object sender, EventArgs e)
         {
-            Prisoners.Add(LoadPrisonerFromInput());   
-            parent.RefreshView(Prisoners.prisoners);
+            MyPrison.Add(LoadPrisonerFromInput());   
+            parent.RefreshView(MyPrison.prisoners);
             this.Close();
         }
 

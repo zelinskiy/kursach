@@ -6,26 +6,31 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
+using System.Collections;
 
 namespace Kursach1.Model
 {
-    static class Prisoners
+    public class Prisoners:IEnumerable
     {
 
-        public static string PrisonersListLocation = "prisoners.json";
+        public string PrisonersListLocation = "prisoners.json";
 
-        public static Random randGen = new Random();
+        public Random randGen = new Random();
 
-        public static List<Prisoner> selectedPrisoners;
+        public List<Prisoner> selectedPrisoners;
 
-        public static List<Prisoner> prisoners = new List<Prisoner>();
-
-        
+        public List<Prisoner> prisoners = new List<Prisoner>();
 
         
 
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return prisoners.GetEnumerator();
+        }
 
-        public static void Create()
+
+
+        public void Create()
         {
             int length = 10;
             for (int i = 0; i < length; i++)
@@ -38,7 +43,7 @@ namespace Kursach1.Model
         
 
 
-        public static void Save()
+        public void Save()
         {
             if (!File.Exists(PrisonersListLocation))
             {
@@ -50,7 +55,7 @@ namespace Kursach1.Model
             }
         }
 
-        public static void Load()
+        public void Load()
         {
             if (File.Exists(PrisonersListLocation))
             {
@@ -66,7 +71,7 @@ namespace Kursach1.Model
 
 
 
-        private static int generateId()
+        private int generateId()
         {
             int r = randGen.Next(1, 10000);
             if (prisoners.Exists(x => x.Id == r))
@@ -76,7 +81,7 @@ namespace Kursach1.Model
             else return r;
         }
 
-        public static void Add(Prisoner p)
+        public void Add(Prisoner p)
         {
             p.Id = generateId();
             prisoners.Add(p);
@@ -86,7 +91,7 @@ namespace Kursach1.Model
 
 
 
-        public static void Replace(int id, Prisoner newP)
+        public void Replace(int id, Prisoner newP)
         {
             int index = prisoners.FindIndex(p => p.Id == id);
             newP.Id = prisoners[index].Id;
@@ -99,7 +104,7 @@ namespace Kursach1.Model
 
 
 
-        public static void Remove(string id)
+        public void Remove(string id)
         {
             try
             {
@@ -113,7 +118,7 @@ namespace Kursach1.Model
         }
 
 
-        public static string FormStatistics()
+        public string FormStatistics()
         {
             StringBuilder sb = new StringBuilder();
 
@@ -147,7 +152,7 @@ namespace Kursach1.Model
 
 
 
-        public static List<Prisoner> SearchBy(string field, string pattern)
+        public List<Prisoner> SearchBy(string field, string pattern)
         {
             switch (field)
             {
@@ -180,7 +185,7 @@ namespace Kursach1.Model
         }
 
 
-        public static List<Prisoner> OrderBy(string field)
+        public List<Prisoner> OrderBy(string field)
         {
             if(selectedPrisoners == null)
             {
@@ -208,5 +213,17 @@ namespace Kursach1.Model
                     throw new ArgumentException("incorrect orderby field");
             }
         }
+
+
+
     }
+
+
+
+
+    //-------------------------------------------------
+
+    
+
+
 }

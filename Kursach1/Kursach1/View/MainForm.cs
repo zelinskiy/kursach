@@ -16,12 +16,20 @@ namespace Kursach1
     public partial class MainForm : Form
     {
 
+        public Prisoners MyPrison;
+
         public MainForm()
         {
             InitializeComponent();
         }
 
-        
+        public MainForm(Prisoners ps)
+        {
+            MyPrison = ps;
+            InitializeComponent();
+        }
+
+
         //List View
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -55,8 +63,8 @@ namespace Kursach1
             PrisonersListView.ColumnClick += new ColumnClickEventHandler(ColumnClick);
             SearchFieldComboBox.SelectedIndex = 0;
 
-            Prisoners.Load();
-            RefreshView(Prisoners.prisoners);
+            MyPrison.Load();
+            RefreshView(MyPrison.prisoners);
 
             
 
@@ -120,7 +128,7 @@ namespace Kursach1
 
         private void ColumnClick(object o, ColumnClickEventArgs e)
         {
-            RefreshView(Prisoners.OrderBy(e.Column.ToString()));
+            RefreshView(MyPrison.OrderBy(e.Column.ToString()));
         }
 
        
@@ -131,7 +139,7 @@ namespace Kursach1
 
         private void ShowStatisticsButton_Click(object sender, EventArgs e)
         {
-            var myForm = new StatsForm();
+            var myForm = new StatsForm(this);
             myForm.Show();
         }
 
@@ -158,21 +166,21 @@ namespace Kursach1
         {
             if (PrisonersListView.SelectedItems.Count == 1)
             {
-                Prisoners.Remove(PrisonersListView.SelectedItems[0].SubItems[0].Text);
-                RefreshView(Prisoners.prisoners);
+                MyPrison.Remove(PrisonersListView.SelectedItems[0].SubItems[0].Text);
+                RefreshView(MyPrison.prisoners);
             }            
         }
 
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            RefreshView(Prisoners.SearchBy(SearchFieldComboBox.SelectedIndex.ToString(), SearchTextBox.Text));
+            RefreshView(MyPrison.SearchBy(SearchFieldComboBox.SelectedIndex.ToString(), SearchTextBox.Text));
         }
 
 
         private void TestDataButton_Click(object sender, EventArgs e)
         {
-            Prisoners.Create();
+            MyPrison.Create();
         }
 
 

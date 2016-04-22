@@ -15,18 +15,19 @@ namespace Kursach1.View
     {
 
         private int Id;
-        
-        
+
+        public Prisoners MyPrison;
 
         private EditForm(MainForm p) : base(p) { }
 
         public EditForm(MainForm parent, int id): base(parent)
         {
             Id = id;
+            MyPrison = parent.MyPrison;
             this.InitializeComponent();
             
 
-            Prisoner p = Prisoners.prisoners.First(x => x.Id == id);
+            Prisoner p = MyPrison.prisoners.First(x => x.Id == id);
 
             FirstNameTextBox.Text = p.FirstName;
             SecondNameTextBox.Text = p.SecondName;
@@ -48,8 +49,8 @@ namespace Kursach1.View
 
         protected override void AddButton_Click(object sender, EventArgs e)
         {
-            Prisoners.Replace(Id, LoadPrisonerFromInput());
-            parent.RefreshView(Prisoners.prisoners);
+            MyPrison.Replace(Id, LoadPrisonerFromInput());
+            parent.RefreshView(MyPrison.prisoners);
             this.Close();
         }
 

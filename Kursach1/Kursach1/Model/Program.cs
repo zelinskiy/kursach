@@ -12,11 +12,17 @@ namespace Kursach1
 
     static class Program
     {
+
+
+        public static Prisoners MyPrison = new Prisoners();
+
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
         /// 
-        
+
+
+
 
         [STAThread]
         static void Main()
@@ -25,13 +31,13 @@ namespace Kursach1
             Application.SetCompatibleTextRenderingDefault(false);
             Application.ApplicationExit += new EventHandler(OnApplicationExit);
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnApplicationExit);
-            Application.Run(new MainForm());
+            Application.Run(new MainForm(MyPrison));
             
         }
 
         public static void OnApplicationExit(object sender, EventArgs e)
         {
-            Prisoners.Save();
+            MyPrison.Save();
         }
 
     }

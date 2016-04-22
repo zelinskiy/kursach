@@ -13,14 +13,17 @@ namespace Kursach1.View
 {
     public partial class StatsForm : Form
     {
-        public StatsForm()
+        public Prisoners MyPrison;
+
+        public StatsForm(MainForm parent)
         {
+            MyPrison = parent.MyPrison;
             InitializeComponent();
         }
 
         private void StatsForm_Load(object sender, EventArgs e)
         {
-            StatsLabel.Text = Prisoners.FormStatistics();
+            StatsLabel.Text = MyPrison.FormStatistics();
         }
 
         private void StatsLabel_Click(object sender, EventArgs e)
