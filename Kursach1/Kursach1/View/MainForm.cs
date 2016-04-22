@@ -21,11 +21,8 @@ namespace Kursach1
             InitializeComponent();
         }
 
-        private void MainForm_Closing(object sender, CancelEventArgs e)
-        {
-            Prisoners.Save();
-        }
-
+        
+        //List View
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -33,8 +30,8 @@ namespace Kursach1
             PrisonersListView.View = System.Windows.Forms.View.Details;
             PrisonersListView.GridLines = true;
             PrisonersListView.FullRowSelect = true;
-
-            PrisonersListView.KeyDown += new KeyEventHandler(PrisonersListView_KeyPress);
+            
+            PrisonersListView.MouseDoubleClick += new MouseEventHandler(PrisonersListView_DoubleClick);
 
             string[] cols = new string[]
             {
@@ -66,10 +63,10 @@ namespace Kursach1
         }
 
 
-        void PrisonersListView_KeyPress(object sender,KeyEventArgs e)
+        
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            //MessageBox.Show("Form.KeyPress: '" + e.KeyCode.ToString() + "' pressed.");
-            switch (e.KeyCode)
+            switch (keyData)
             {
                 case Keys.Delete:
                     DeleteButton_Click(null, null);
@@ -77,11 +74,23 @@ namespace Kursach1
                 case Keys.E:
                     EditButton_Click(null, null);
                     break;
-
+                case Keys.N:
+                    AddPrisonerButton_Click(null, null);
+                    break;
+                case Keys.Enter:
+                    SearchButton_Click(null, null);
+                    break;
             }
-        }
-        
 
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+
+
+        private void PrisonersListView_DoubleClick(object sender, EventArgs e)
+        {
+            EditButton_Click(null, null);
+        }
 
 
         public void RefreshView(List<Prisoner> ps)
@@ -109,14 +118,16 @@ namespace Kursach1
             PrisonersListView.MultiSelect = false;
         }
 
-
-
-        private void PrisonersListView_Click(object sender, EventArgs e)
+        private void ColumnClick(object o, ColumnClickEventArgs e)
         {
-            MessageBox.Show(PrisonersListView.SelectedItems[0].ToString());
+            RefreshView(Prisoners.OrderBy(e.Column.ToString()));
         }
 
+       
 
+
+
+        //BUTTONS
 
         private void ShowStatisticsButton_Click(object sender, EventArgs e)
         {
@@ -124,16 +135,24 @@ namespace Kursach1
             myForm.Show();
         }
 
+
         private void AddPrisonerButton_Click(object sender, EventArgs e)
         {
             var myForm = new AddForm(this);
             myForm.Show();
         }
 
-        private void PrisonersListView_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void EditButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(PrisonersListView.SelectedItems[0].ToString());
+            if (PrisonersListView.SelectedItems.Count == 1)
+            {
+                int myId = int.Parse(PrisonersListView.SelectedItems[0].SubItems[0].Text);
+                var myForm = new EditForm(this, myId);
+                myForm.Show();
+            }
         }
+
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
@@ -141,43 +160,32 @@ namespace Kursach1
             {
                 Prisoners.Remove(PrisonersListView.SelectedItems[0].SubItems[0].Text);
                 RefreshView(Prisoners.prisoners);
-            }
-            
-        }
-
-        private void PrisonersListView_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-        
-
-        private void ColumnClick(object o, ColumnClickEventArgs e)
-        {
-            RefreshView(Prisoners.OrderBy(e.Column.ToString()));
+            }            
         }
 
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
             RefreshView(Prisoners.SearchBy(SearchFieldComboBox.SelectedIndex.ToString(), SearchTextBox.Text));
-            
         }
+
 
         private void TestDataButton_Click(object sender, EventArgs e)
         {
             Prisoners.Create();
         }
 
-        private void EditButton_Click(object sender, EventArgs e)
-        {
-            if (PrisonersListView.SelectedItems.Count == 1)
-            {
-                var myForm = new EditForm(this, int.Parse(PrisonersListView.SelectedItems[0].SubItems[0].Text));
-                myForm.Show();
-            }            
-        }
+
+
+
+
+        
+
+
+        
+
+        
+
+        
     }
 }

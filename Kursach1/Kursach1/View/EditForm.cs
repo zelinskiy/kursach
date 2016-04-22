@@ -11,20 +11,21 @@ using System.Windows.Forms;
 
 namespace Kursach1.View
 {
-    public partial class EditForm : Form
+    public partial class EditForm : AddForm
     {
-        private MainForm parent;
-        private int id;
 
-        public EditForm(MainForm parent, int Id)
-        {
-            this.id = Id;
-            this.parent = parent;
-            InitializeComponent();
-        }
+        private int Id;
+        
+        
 
-        public void EditForm_Load(object o, EventArgs e)
+        private EditForm(MainForm p) : base(p) { }
+
+        public EditForm(MainForm parent, int id): base(parent)
         {
+            Id = id;
+            this.InitializeComponent();
+            
+
             Prisoner p = Prisoners.prisoners.First(x => x.Id == id);
 
             FirstNameTextBox.Text = p.FirstName;
@@ -38,40 +39,20 @@ namespace Kursach1.View
             SentenceYearsBox.Text = p.Sentence.Months.ToString();
             ImprisonedDatePicker.Value = p.Imprisoned;
             HierarchyPlaceTextBox.Text = p.Hierarchy;
+
+            AddButton.Text = "Edit";
+
+
+
         }
 
-        private void EditButton_Click(object sender, EventArgs e)
+        protected override void AddButton_Click(object sender, EventArgs e)
         {
-            
-
+            Prisoners.Replace(Id, LoadPrisonerFromInput());
+            parent.RefreshView(Prisoners.prisoners);
+            this.Close();
         }
 
-        private void EditButton_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                Prisoners.Replace(
-                        id: id,
-                        firstName: FirstNameTextBox.Text,
-                        secondName: SecondNameTextBox.Text,
-                        patronimyc: PatronymicTextBox.Text,
-                        birthday: BirthdayPicker.Value,
 
-                        article: ArticleBox.Text,
-                        cell: CellBox.Text,
-                        sentenceYears: SentenceYearsBox.Text,
-                        sentenceMonths: SentenceYearsBox.Text,
-                        imprisonedDate: ImprisonedDatePicker.Value,
-                        hierarchy: HierarchyPlaceTextBox.Text
-                        );
-
-                parent.RefreshView(Prisoners.prisoners);
-                this.Close();
-            }
-            catch (ArgumentException ex)
-            {
-                MessageBox.Show("Please , Check your data!\n" + ex.Message);
-            }
-        }
     }
 }

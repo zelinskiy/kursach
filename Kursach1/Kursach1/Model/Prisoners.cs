@@ -11,12 +11,12 @@ namespace Kursach1.Model
 {
     static class Prisoners
     {
-        public static List<Prisoner> selectedPrisoners;
-        
 
         public static string PrisonersListLocation = "prisoners.json";
 
         public static Random randGen = new Random();
+
+        public static List<Prisoner> selectedPrisoners;
 
         public static List<Prisoner> prisoners = new List<Prisoner>();
 
@@ -76,68 +76,21 @@ namespace Kursach1.Model
             else return r;
         }
 
-        public static void Add(
-                string firstName,
-                string secondName,
-                string patronimyc,
-                DateTime birthday,
-
-                string article,
-                string cell,
-                string sentenceYears,
-                string sentenceMonths,
-                DateTime imprisonedDate,
-                string hierarchy
-            )
+        public static void Add(Prisoner p)
         {
-            prisoners.Add(new Prisoner()
-            {
-                Id = generateId(),
-                FirstName = firstName,
-                SecondName = secondName,
-                Patronymic = patronimyc,
-                Birthday = birthday,
-
-                Article = int.Parse(article),
-                Cell = int.Parse(cell),
-                Sentence = new Prisoner.sentence(int.Parse(sentenceYears), int.Parse(sentenceMonths)),
-                Imprisoned = imprisonedDate,
-                Hierarchy = hierarchy
-            });
+            p.Id = generateId();
+            prisoners.Add(p);
         }
 
 
 
 
 
-        public static void Replace(
-                int id,
-                string firstName,
-                string secondName,
-                string patronimyc,
-                DateTime birthday,
-
-                string article,
-                string cell,
-                string sentenceYears,
-                string sentenceMonths,
-                DateTime imprisonedDate,
-                string hierarchy
-            )
+        public static void Replace(int id, Prisoner newP)
         {
-            foreach (var p in prisoners.Where(p => p.Id == id))
-            {
-                p.FirstName = firstName;
-                p.SecondName = secondName;
-                p.Patronymic = patronimyc;
-                p.Birthday = birthday;
-            
-                p.Article = int.Parse(article);
-                p.Cell = int.Parse(cell);
-                p.Sentence = new Prisoner.sentence(int.Parse(sentenceYears), int.Parse(sentenceMonths));
-                p.Imprisoned = imprisonedDate;
-                p.Hierarchy = hierarchy;
-            }
+            int index = prisoners.FindIndex(p => p.Id == id);
+            newP.Id = prisoners[index].Id;
+            prisoners[index] = newP;
         }
 
 

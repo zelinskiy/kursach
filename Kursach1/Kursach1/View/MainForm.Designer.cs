@@ -72,7 +72,7 @@
             this.PrisonersListView.TabIndex = 3;
             this.PrisonersListView.UseCompatibleStateImageBehavior = false;
             this.PrisonersListView.View = System.Windows.Forms.View.Details;
-            this.PrisonersListView.SelectedIndexChanged += new System.EventHandler(this.PrisonersListView_SelectedIndexChanged_1);
+            
             // 
             // DeleteButton
             // 

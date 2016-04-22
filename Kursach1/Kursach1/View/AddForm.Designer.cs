@@ -280,27 +280,27 @@
 
         #endregion
 
-        private System.Windows.Forms.Button AddButton;
+        public System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox SecondNameTextBox;
-        private System.Windows.Forms.TextBox ArticleBox;
-        private System.Windows.Forms.TextBox CellBox;
+        public System.Windows.Forms.TextBox SecondNameTextBox;
+        public System.Windows.Forms.TextBox ArticleBox;
+        public System.Windows.Forms.TextBox CellBox;
         private System.Windows.Forms.Label BirthdayLabel;
-        private System.Windows.Forms.DateTimePicker BirthdayPicker;
-        private System.Windows.Forms.TextBox FirstNameTextBox;
+        public System.Windows.Forms.DateTimePicker BirthdayPicker;
+        public System.Windows.Forms.TextBox FirstNameTextBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox PatronymicTextBox;
+        public System.Windows.Forms.TextBox PatronymicTextBox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox SentenceYearsBox;
+        public System.Windows.Forms.TextBox SentenceYearsBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker ImprisonedDatePicker;
+        public System.Windows.Forms.DateTimePicker ImprisonedDatePicker;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox HierarchyPlaceTextBox;
-        private System.Windows.Forms.TextBox SentenceMonthsBox;
+        public System.Windows.Forms.TextBox SentenceMonthsBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        public System.Windows.Forms.TextBox HierarchyPlaceTextBox;
     }
 }

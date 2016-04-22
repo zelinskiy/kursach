@@ -116,8 +116,38 @@ namespace Kursach1
             Hierarchy = Hnames[rnd.Next(Hnames.Count())];
 
         }
-        
-    }
 
-    
+
+        //Add checks for fields
+        public Prisoner(
+                string firstName,
+                string secondName,
+                string patronimyc,
+                DateTime birthday,
+
+                string article,
+                string cell,
+                string sentenceYears,
+                string sentenceMonths,
+                DateTime imprisonedDate,
+                string hierarchy
+            )
+        {
+            FirstName = firstName;
+            SecondName = secondName;
+            Patronymic = patronimyc;
+            Birthday = birthday;
+
+            Article = int.Parse(article);
+            Cell = int.Parse(cell);
+            Sentence = new sentence(int.Parse(sentenceYears), int.Parse(sentenceMonths));
+            Imprisoned = imprisonedDate;
+            Hierarchy = hierarchy;
+        }
+
+        
+
+
+
+    }    
 }

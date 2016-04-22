@@ -8,7 +8,10 @@ namespace Kursach1.View
     public partial class AddForm : Form
     {
 
-        private MainForm parent;
+        public MainForm parent;
+
+        public AddForm() { }
+
 
         public AddForm(MainForm parent)
         {
@@ -23,11 +26,27 @@ namespace Kursach1.View
 
         }
 
-        private void AddButton_Click(object sender, EventArgs e)
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Escape:
+                    Close();
+                    break;
+                case Keys.Enter:
+                    AddButton_Click(null, null);
+                    break;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+
+        public Prisoner LoadPrisonerFromInput()
         {
             try
             {
-                Prisoners.Add(
+                return new Prisoner(
                         firstName: FirstNameTextBox.Text,
                         secondName: SecondNameTextBox.Text,
                         patronimyc: PatronymicTextBox.Text,
@@ -36,19 +55,25 @@ namespace Kursach1.View
                         article: ArticleBox.Text,
                         cell: CellBox.Text,
                         sentenceYears: SentenceYearsBox.Text,
-                        sentenceMonths: SentenceYearsBox.Text,
+                        sentenceMonths: SentenceMonthsBox.Text,
                         imprisonedDate: ImprisonedDatePicker.Value,
                         hierarchy: HierarchyPlaceTextBox.Text
                         );
-
-                parent.RefreshView(Prisoners.prisoners);
-                this.Close();
             }
             catch (ArgumentException ex)
             {
                 MessageBox.Show("Please , Check your data!\n" + ex.Message);
             }
-            
+            //?????????
+            return null;
+        }
+
+
+        protected virtual void AddButton_Click(object sender, EventArgs e)
+        {
+            Prisoners.Add(LoadPrisonerFromInput());   
+            parent.RefreshView(Prisoners.prisoners);
+            this.Close();
         }
 
         private void label4_Click(object sender, EventArgs e)
