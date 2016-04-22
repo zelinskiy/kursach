@@ -45,10 +45,6 @@ namespace Kursach1.Model
 
         public void Save()
         {
-            if (!File.Exists(PrisonersListLocation))
-            {
-                File.Create(PrisonersListLocation);
-            }
             using (TextWriter writer = new StreamWriter(File.Create(PrisonersListLocation)))
             {
                 writer.WriteLine(JsonConvert.SerializeObject(prisoners));
@@ -152,15 +148,25 @@ namespace Kursach1.Model
 
 
 
-        public List<Prisoner> SearchBy(string field, string pattern)
+        public List<Prisoner> SearchBy(Func<Prisoner, string> f, string pattern, bool strict)
         {
+            if (strict)
+            {
+                selectedPrisoners = prisoners.Where(x => f(x).ToLower() == pattern.ToLower()).ToList();
+            }
+            else
+            {
+                selectedPrisoners = prisoners.Where(x => f(x).ToLower().Contains(pattern.ToLower())).ToList();
+            }
+                  
+            /*
             switch (field)
             {
                 case "":
                     selectedPrisoners = prisoners;
                     break;
                 case "0":
-                    selectedPrisoners = prisoners.Where(p=>p.Id.ToString().Contains(pattern)).ToList();
+                    selectedPrisoners = prisoners.Where(p=>p.Id.ToString() == pattern ).ToList();
                     break;
                 case "1":
                     selectedPrisoners = prisoners.Where(p => p.FirstName.ToString().Contains(pattern)).ToList();
@@ -181,49 +187,43 @@ namespace Kursach1.Model
                 default:
                     throw new ArgumentException("incorrect searchby field");
             }
+            */
             return selectedPrisoners;
         }
 
 
-        public List<Prisoner> OrderBy(string field)
+        public List<Prisoner> OrderBy(Func<Prisoner, string> f, bool ascending)
         {
-            if(selectedPrisoners == null)
+            if (ascending)
             {
-                selectedPrisoners = prisoners;
+                selectedPrisoners = prisoners.OrderBy(x => TryParse(f(x))).ToList();
             }
-            switch (field)
+            else
             {
-                case "":
-                    return selectedPrisoners;
-                case "0":
-                    return selectedPrisoners.OrderByDescending(p => p.Id).ToList();
-                case "1":
-                    return selectedPrisoners.OrderByDescending(p => p.SecondName).ToList();
-                case "2":
-                    return selectedPrisoners.OrderByDescending(p => p.Age).ToList();
-                case "3":
-                    return selectedPrisoners.OrderByDescending(p => p.Article).ToList();
-                case "4":
-                    return selectedPrisoners.OrderByDescending(p => p.Cell).ToList();
-                case "5":
-                    return selectedPrisoners.OrderByDescending(p => p.SentenceDaysLeft).ToList();
-                case "6":
-                    return selectedPrisoners.OrderByDescending(p => p.Hierarchy).ToList();
-                default:
-                    throw new ArgumentException("incorrect orderby field");
+                selectedPrisoners = prisoners.OrderByDescending(x => TryParse(f(x))).ToList();
             }
+            
+            return selectedPrisoners;
+        }
+        
+        public dynamic TryParse(string s)
+        {
+            int res;
+
+            if(int.TryParse(s,out res))
+            {
+                return res;
+            }
+            else
+            {
+                return s;
+            }            
+            
         }
 
 
-
     }
-
-
-
-
-    //-------------------------------------------------
-
-    
+        
 
 
 }

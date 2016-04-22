@@ -37,6 +37,14 @@
             this.SearchTextBox = new System.Windows.Forms.TextBox();
             this.TestDataButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
+            this.IsStrictCheckBox = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // ShowStatisticsButton
@@ -45,18 +53,18 @@
             this.ShowStatisticsButton.Name = "ShowStatisticsButton";
             this.ShowStatisticsButton.Size = new System.Drawing.Size(92, 37);
             this.ShowStatisticsButton.TabIndex = 1;
-            this.ShowStatisticsButton.Text = "Stats";
+            this.ShowStatisticsButton.Text = "Статистика";
             this.ShowStatisticsButton.UseVisualStyleBackColor = true;
             this.ShowStatisticsButton.Click += new System.EventHandler(this.ShowStatisticsButton_Click);
             // 
             // AddPrisonerButton
             // 
             this.AddPrisonerButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.AddPrisonerButton.Location = new System.Drawing.Point(12, 12);
+            this.AddPrisonerButton.Location = new System.Drawing.Point(0, 8);
             this.AddPrisonerButton.Name = "AddPrisonerButton";
             this.AddPrisonerButton.Size = new System.Drawing.Size(81, 54);
             this.AddPrisonerButton.TabIndex = 2;
-            this.AddPrisonerButton.Text = "Add Prisoner";
+            this.AddPrisonerButton.Text = "Добавить";
             this.AddPrisonerButton.UseVisualStyleBackColor = false;
             this.AddPrisonerButton.Click += new System.EventHandler(this.AddPrisonerButton_Click);
             // 
@@ -66,23 +74,22 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PrisonersListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.PrisonersListView.Location = new System.Drawing.Point(12, 100);
+            this.PrisonersListView.Location = new System.Drawing.Point(12, 210);
             this.PrisonersListView.Name = "PrisonersListView";
-            this.PrisonersListView.Size = new System.Drawing.Size(1080, 514);
+            this.PrisonersListView.Size = new System.Drawing.Size(1080, 496);
             this.PrisonersListView.TabIndex = 3;
             this.PrisonersListView.UseCompatibleStateImageBehavior = false;
             this.PrisonersListView.View = System.Windows.Forms.View.Details;
-            
             // 
             // DeleteButton
             // 
             this.DeleteButton.BackColor = System.Drawing.Color.Red;
             this.DeleteButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.DeleteButton.Location = new System.Drawing.Point(99, 12);
+            this.DeleteButton.Location = new System.Drawing.Point(87, 8);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(75, 54);
             this.DeleteButton.TabIndex = 4;
-            this.DeleteButton.Text = "Delete";
+            this.DeleteButton.Text = "Удалить";
             this.DeleteButton.UseVisualStyleBackColor = false;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
@@ -90,28 +97,28 @@
             // 
             this.SearchFieldComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SearchFieldComboBox.FormattingEnabled = true;
-            this.SearchFieldComboBox.Location = new System.Drawing.Point(386, 44);
+            this.SearchFieldComboBox.Location = new System.Drawing.Point(146, 45);
             this.SearchFieldComboBox.Name = "SearchFieldComboBox";
-            this.SearchFieldComboBox.Size = new System.Drawing.Size(233, 24);
+            this.SearchFieldComboBox.Size = new System.Drawing.Size(167, 24);
             this.SearchFieldComboBox.TabIndex = 5;
             // 
             // SearchButton
             // 
             this.SearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.SearchButton.Location = new System.Drawing.Point(625, 12);
+            this.SearchButton.Location = new System.Drawing.Point(319, 13);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(105, 56);
             this.SearchButton.TabIndex = 6;
-            this.SearchButton.Text = "Search";
+            this.SearchButton.Text = "Поиск";
             this.SearchButton.UseVisualStyleBackColor = true;
             this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // SearchTextBox
             // 
             this.SearchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.SearchTextBox.Location = new System.Drawing.Point(386, 12);
+            this.SearchTextBox.Location = new System.Drawing.Point(6, 13);
             this.SearchTextBox.Name = "SearchTextBox";
-            this.SearchTextBox.Size = new System.Drawing.Size(233, 26);
+            this.SearchTextBox.Size = new System.Drawing.Size(307, 26);
             this.SearchTextBox.TabIndex = 7;
             // 
             // TestDataButton
@@ -120,38 +127,104 @@
             this.TestDataButton.Name = "TestDataButton";
             this.TestDataButton.Size = new System.Drawing.Size(92, 39);
             this.TestDataButton.TabIndex = 8;
-            this.TestDataButton.Text = "Testdata";
+            this.TestDataButton.Text = "Тест";
             this.TestDataButton.UseVisualStyleBackColor = true;
             this.TestDataButton.Click += new System.EventHandler(this.TestDataButton_Click);
             // 
             // EditButton
             // 
-            this.EditButton.Location = new System.Drawing.Point(180, 12);
+            this.EditButton.Location = new System.Drawing.Point(168, 8);
             this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(70, 54);
+            this.EditButton.Size = new System.Drawing.Size(98, 54);
             this.EditButton.TabIndex = 9;
-            this.EditButton.Text = "Edit";
+            this.EditButton.Text = "Изменить";
             this.EditButton.UseVisualStyleBackColor = true;
             this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
+            // 
+            // IsStrictCheckBox
+            // 
+            this.IsStrictCheckBox.AutoSize = true;
+            this.IsStrictCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.IsStrictCheckBox.Location = new System.Drawing.Point(6, 50);
+            this.IsStrictCheckBox.Name = "IsStrictCheckBox";
+            this.IsStrictCheckBox.Size = new System.Drawing.Size(131, 19);
+            this.IsStrictCheckBox.TabIndex = 10;
+            this.IsStrictCheckBox.Text = "точн. совпадение";
+            this.IsStrictCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label1.Location = new System.Drawing.Point(22, 65);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 17);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "F12";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label2.Location = new System.Drawing.Point(112, 65);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 17);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Del";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label3.Location = new System.Drawing.Point(190, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 17);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "F11";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.EditButton);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.AddPrisonerButton);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.DeleteButton);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(272, 85);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.SearchButton);
+            this.groupBox2.Controls.Add(this.SearchFieldComboBox);
+            this.groupBox2.Controls.Add(this.IsStrictCheckBox);
+            this.groupBox2.Controls.Add(this.SearchTextBox);
+            this.groupBox2.Location = new System.Drawing.Point(307, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(431, 85);
+            this.groupBox2.TabIndex = 15;
+            this.groupBox2.TabStop = false;
             // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1104, 626);
-            this.Controls.Add(this.EditButton);
+            this.ClientSize = new System.Drawing.Size(1104, 718);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.TestDataButton);
-            this.Controls.Add(this.SearchTextBox);
-            this.Controls.Add(this.SearchButton);
-            this.Controls.Add(this.SearchFieldComboBox);
-            this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.PrisonersListView);
-            this.Controls.Add(this.AddPrisonerButton);
             this.Controls.Add(this.ShowStatisticsButton);
             this.Name = "MainForm";
             this.Text = "Тюрьма";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -165,6 +238,12 @@
         private System.Windows.Forms.TextBox SearchTextBox;
         private System.Windows.Forms.Button TestDataButton;
         private System.Windows.Forms.Button EditButton;
+        private System.Windows.Forms.CheckBox IsStrictCheckBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
 

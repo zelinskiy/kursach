@@ -50,22 +50,25 @@
             this.SentenceMonthsBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(224, 377);
+            this.AddButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.AddButton.Location = new System.Drawing.Point(220, 397);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(185, 60);
+            this.AddButton.Size = new System.Drawing.Size(185, 59);
             this.AddButton.TabIndex = 0;
-            this.AddButton.Text = "Add";
+            this.AddButton.Text = "Сохранить";
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // NameLabel
             // 
             this.NameLabel.AutoSize = true;
-            this.NameLabel.Location = new System.Drawing.Point(138, 12);
+            this.NameLabel.Location = new System.Drawing.Point(96, 21);
             this.NameLabel.Name = "NameLabel";
             this.NameLabel.Size = new System.Drawing.Size(70, 17);
             this.NameLabel.TabIndex = 1;
@@ -74,7 +77,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(150, 176);
+            this.label1.Location = new System.Drawing.Point(108, 185);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 17);
             this.label1.TabIndex = 4;
@@ -84,7 +87,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(154, 148);
+            this.label2.Location = new System.Drawing.Point(112, 157);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 17);
             this.label2.TabIndex = 3;
@@ -92,7 +95,7 @@
             // 
             // SecondNameTextBox
             // 
-            this.SecondNameTextBox.Location = new System.Drawing.Point(214, 12);
+            this.SecondNameTextBox.Location = new System.Drawing.Point(172, 21);
             this.SecondNameTextBox.Name = "SecondNameTextBox";
             this.SecondNameTextBox.Size = new System.Drawing.Size(254, 22);
             this.SecondNameTextBox.TabIndex = 5;
@@ -100,7 +103,7 @@
             // 
             // ArticleBox
             // 
-            this.ArticleBox.Location = new System.Drawing.Point(214, 148);
+            this.ArticleBox.Location = new System.Drawing.Point(172, 157);
             this.ArticleBox.Name = "ArticleBox";
             this.ArticleBox.Size = new System.Drawing.Size(254, 22);
             this.ArticleBox.TabIndex = 7;
@@ -108,7 +111,7 @@
             // 
             // CellBox
             // 
-            this.CellBox.Location = new System.Drawing.Point(214, 176);
+            this.CellBox.Location = new System.Drawing.Point(172, 185);
             this.CellBox.Name = "CellBox";
             this.CellBox.Size = new System.Drawing.Size(254, 22);
             this.CellBox.TabIndex = 8;
@@ -117,7 +120,7 @@
             // BirthdayLabel
             // 
             this.BirthdayLabel.AutoSize = true;
-            this.BirthdayLabel.Location = new System.Drawing.Point(96, 96);
+            this.BirthdayLabel.Location = new System.Drawing.Point(54, 105);
             this.BirthdayLabel.Name = "BirthdayLabel";
             this.BirthdayLabel.Size = new System.Drawing.Size(112, 17);
             this.BirthdayLabel.TabIndex = 9;
@@ -125,7 +128,7 @@
             // 
             // BirthdayPicker
             // 
-            this.BirthdayPicker.Location = new System.Drawing.Point(214, 96);
+            this.BirthdayPicker.Location = new System.Drawing.Point(172, 105);
             this.BirthdayPicker.Name = "BirthdayPicker";
             this.BirthdayPicker.Size = new System.Drawing.Size(254, 22);
             this.BirthdayPicker.TabIndex = 10;
@@ -133,7 +136,7 @@
             // 
             // FirstNameTextBox
             // 
-            this.FirstNameTextBox.Location = new System.Drawing.Point(214, 40);
+            this.FirstNameTextBox.Location = new System.Drawing.Point(172, 49);
             this.FirstNameTextBox.Name = "FirstNameTextBox";
             this.FirstNameTextBox.Size = new System.Drawing.Size(254, 22);
             this.FirstNameTextBox.TabIndex = 12;
@@ -142,7 +145,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(173, 40);
+            this.label3.Location = new System.Drawing.Point(131, 49);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 17);
             this.label3.TabIndex = 11;
@@ -150,7 +153,7 @@
             // 
             // PatronymicTextBox
             // 
-            this.PatronymicTextBox.Location = new System.Drawing.Point(214, 68);
+            this.PatronymicTextBox.Location = new System.Drawing.Point(172, 77);
             this.PatronymicTextBox.Name = "PatronymicTextBox";
             this.PatronymicTextBox.Size = new System.Drawing.Size(254, 22);
             this.PatronymicTextBox.TabIndex = 14;
@@ -159,7 +162,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(137, 68);
+            this.label4.Location = new System.Drawing.Point(95, 77);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 17);
             this.label4.TabIndex = 13;
@@ -168,7 +171,7 @@
             // 
             // SentenceYearsBox
             // 
-            this.SentenceYearsBox.Location = new System.Drawing.Point(214, 204);
+            this.SentenceYearsBox.Location = new System.Drawing.Point(172, 213);
             this.SentenceYearsBox.Name = "SentenceYearsBox";
             this.SentenceYearsBox.Size = new System.Drawing.Size(56, 22);
             this.SentenceYearsBox.TabIndex = 16;
@@ -177,7 +180,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(168, 204);
+            this.label5.Location = new System.Drawing.Point(126, 213);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 17);
             this.label5.TabIndex = 15;
@@ -185,7 +188,7 @@
             // 
             // ImprisonedDatePicker
             // 
-            this.ImprisonedDatePicker.Location = new System.Drawing.Point(214, 229);
+            this.ImprisonedDatePicker.Location = new System.Drawing.Point(172, 238);
             this.ImprisonedDatePicker.Name = "ImprisonedDatePicker";
             this.ImprisonedDatePicker.Size = new System.Drawing.Size(254, 22);
             this.ImprisonedDatePicker.TabIndex = 18;
@@ -194,7 +197,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(56, 229);
+            this.label6.Location = new System.Drawing.Point(14, 238);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(152, 17);
             this.label6.TabIndex = 17;
@@ -203,7 +206,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(82, 259);
+            this.label7.Location = new System.Drawing.Point(40, 268);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(126, 17);
             this.label7.TabIndex = 19;
@@ -211,7 +214,7 @@
             // 
             // HierarchyPlaceTextBox
             // 
-            this.HierarchyPlaceTextBox.Location = new System.Drawing.Point(214, 259);
+            this.HierarchyPlaceTextBox.Location = new System.Drawing.Point(172, 268);
             this.HierarchyPlaceTextBox.Name = "HierarchyPlaceTextBox";
             this.HierarchyPlaceTextBox.Size = new System.Drawing.Size(254, 22);
             this.HierarchyPlaceTextBox.TabIndex = 20;
@@ -219,7 +222,7 @@
             // 
             // SentenceMonthsBox
             // 
-            this.SentenceMonthsBox.Location = new System.Drawing.Point(329, 201);
+            this.SentenceMonthsBox.Location = new System.Drawing.Point(287, 210);
             this.SentenceMonthsBox.Name = "SentenceMonthsBox";
             this.SentenceMonthsBox.Size = new System.Drawing.Size(56, 22);
             this.SentenceMonthsBox.TabIndex = 21;
@@ -228,7 +231,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(277, 205);
+            this.label8.Location = new System.Drawing.Point(235, 214);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(33, 17);
             this.label8.TabIndex = 22;
@@ -238,43 +241,54 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(388, 204);
+            this.label9.Location = new System.Drawing.Point(346, 213);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 17);
             this.label9.TabIndex = 23;
             this.label9.Text = "Месяцев";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox1.Controls.Add(this.SecondNameTextBox);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.NameLabel);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.SentenceMonthsBox);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.HierarchyPlaceTextBox);
+            this.groupBox1.Controls.Add(this.ArticleBox);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.CellBox);
+            this.groupBox1.Controls.Add(this.ImprisonedDatePicker);
+            this.groupBox1.Controls.Add(this.BirthdayLabel);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.BirthdayPicker);
+            this.groupBox1.Controls.Add(this.SentenceYearsBox);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.FirstNameTextBox);
+            this.groupBox1.Controls.Add(this.PatronymicTextBox);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Location = new System.Drawing.Point(91, 56);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(436, 311);
+            this.groupBox1.TabIndex = 24;
+            this.groupBox1.TabStop = false;
+            // 
             // AddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(645, 449);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.SentenceMonthsBox);
-            this.Controls.Add(this.HierarchyPlaceTextBox);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.ImprisonedDatePicker);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.SentenceYearsBox);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.PatronymicTextBox);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.FirstNameTextBox);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.BirthdayPicker);
-            this.Controls.Add(this.BirthdayLabel);
-            this.Controls.Add(this.CellBox);
-            this.Controls.Add(this.ArticleBox);
-            this.Controls.Add(this.SecondNameTextBox);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.NameLabel);
+            this.ClientSize = new System.Drawing.Size(625, 512);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.AddButton);
             this.Name = "AddForm";
-            this.Text = "AddForm";
+            this.Text = "Добавление";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -302,5 +316,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         public System.Windows.Forms.TextBox HierarchyPlaceTextBox;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

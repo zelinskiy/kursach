@@ -18,6 +18,22 @@ namespace Kursach1
 
         public Prisoners MyPrison;
 
+        public bool Ascending = false;
+
+        public Dictionary<string, Func<Prisoner, string>> fields = new Dictionary<string, Func<Prisoner, string>>()
+        {
+            { "Фамилия",p=>p.SecondName },
+            { "Номер",p=>p.Id.ToString() },
+            { "Возраст",p=>p.Age.ToString() },
+            { "Статья",p=>p.Article.ToString() },
+            { "Камера",p=>p.Cell.ToString() },
+            { "Ост. дней",p=>p.SentenceDaysLeft.ToString() },
+            { "Иерархич.",p=>p.Hierarchy },
+             { "Заключен.",p=>p.Imprisoned.DayOfWeek.ToString() },
+        };
+
+
+
         public MainForm()
         {
             InitializeComponent();
@@ -41,22 +57,14 @@ namespace Kursach1
             
             PrisonersListView.MouseDoubleClick += new MouseEventHandler(PrisonersListView_DoubleClick);
 
-            string[] cols = new string[]
-            {
-                "Номер",
-                "Фамилия",
-                "Возраст",
-                "Статья",
-                "Камера",
-                "Ост. дней",
-                "Иерархич."
-            };
+            
 
+            string[] fieldNames = fields.Keys.ToArray();
 
-            for(int i=0; i< cols.Length; i++)
+            for(int i=0; i< fieldNames.Length; i++)
             {
-                PrisonersListView.Columns.Add(cols[i],150);
-                SearchFieldComboBox.Items.Add(cols[i]);
+                PrisonersListView.Columns.Add(fieldNames[i],150);
+                SearchFieldComboBox.Items.Add(fieldNames[i]);
             }
 
 
@@ -79,10 +87,10 @@ namespace Kursach1
                 case Keys.Delete:
                     DeleteButton_Click(null, null);
                     break;
-                case Keys.E:
+                case Keys.F11:
                     EditButton_Click(null, null);
                     break;
-                case Keys.N:
+                case Keys.F12:
                     AddPrisonerButton_Click(null, null);
                     break;
                 case Keys.Enter:
@@ -106,19 +114,14 @@ namespace Kursach1
             PrisonersListView.Items.Clear();
             foreach (Prisoner p in ps)
             {
-                PrisonersListView.Items.Add(
-                    new ListViewItem(new string[]
-                    {
-                        p.Id.ToString(),
-                        p.SecondName,
-                        p.Age.ToString(),
-                        p.Article.ToString(),
-                        p.Cell.ToString(),
-                        p.SentenceDaysLeft.ToString(),
-                        p.Hierarchy
-                    }
-                    )
-                );
+                List<string> row = new List<string>();
+
+                foreach(Func<Prisoner, string> f in fields.Values)
+                {
+                    row.Add(f(p));
+                }
+
+                PrisonersListView.Items.Add(new ListViewItem(row.ToArray()));
             }
 
             PrisonersListView.Focus();
@@ -128,7 +131,9 @@ namespace Kursach1
 
         private void ColumnClick(object o, ColumnClickEventArgs e)
         {
-            RefreshView(MyPrison.OrderBy(e.Column.ToString()));
+            Func<Prisoner, string> field = fields.Values.ToList()[e.Column];
+            RefreshView(MyPrison.OrderBy(field, Ascending));
+            Ascending = !Ascending;
         }
 
        
@@ -174,13 +179,17 @@ namespace Kursach1
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            RefreshView(MyPrison.SearchBy(SearchFieldComboBox.SelectedIndex.ToString(), SearchTextBox.Text));
+            string pattern = SearchTextBox.Text;
+            Func<Prisoner, string> field = fields.Values.ToList()[SearchFieldComboBox.SelectedIndex];
+            bool strict = IsStrictCheckBox.Checked;
+            RefreshView(MyPrison.SearchBy(field, pattern, strict));
         }
 
 
         private void TestDataButton_Click(object sender, EventArgs e)
         {
             MyPrison.Create();
+            RefreshView(MyPrison.prisoners);
         }
 
 

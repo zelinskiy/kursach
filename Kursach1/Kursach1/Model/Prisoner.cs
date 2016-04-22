@@ -21,6 +21,7 @@ namespace Kursach1
             }
         }
 
+
         //-----------------------
 
         public int Article;
