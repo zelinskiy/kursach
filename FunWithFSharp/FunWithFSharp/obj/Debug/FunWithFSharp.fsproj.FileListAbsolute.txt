@@ -1,0 +1,9 @@
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\FunWithFSharp\FunWithFSharp\bin\Debug\FunWithFSharp.exe.config
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\FunWithFSharp\FunWithFSharp\bin\Debug\FunWithFSharp.XML
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\FunWithFSharp\FunWithFSharp\bin\Debug\FunWithFSharp.exe
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\FunWithFSharp\FunWithFSharp\bin\Debug\FunWithFSharp.pdb
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\FunWithFSharp\FunWithFSharp\bin\Debug\FSharp.Core.dll
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\FunWithFSharp\FunWithFSharp\bin\Debug\FSharp.Core.xml
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\FunWithFSharp\FunWithFSharp\bin\Debug\ru\FSharp.Core.resources.dll
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\FunWithFSharp\FunWithFSharp\obj\Debug\FunWithFSharp.exe
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\FunWithFSharp\FunWithFSharp\obj\Debug\FunWithFSharp.pdb
