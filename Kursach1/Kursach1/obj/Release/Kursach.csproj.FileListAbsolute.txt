@@ -1,0 +1,14 @@
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\bin\Release\Kursach1.exe.config
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\bin\Release\Kursach1.exe
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\bin\Release\Kursach1.pdb
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\bin\Release\Newtonsoft.Json.dll
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\bin\Release\Newtonsoft.Json.xml
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\obj\Release\Kursach.csprojResolveAssemblyReference.cache
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\obj\Release\Kursach1.View.AddForm.resources
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\obj\Release\Kursach1.View.EditForm.resources
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\obj\Release\Kursach1.MainForm.resources
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\obj\Release\Kursach1.Properties.Resources.resources
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\obj\Release\Kursach1.View.StatsForm.resources
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\obj\Release\Kursach.csproj.GenerateResource.Cache
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\obj\Release\Kursach1.exe
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\obj\Release\Kursach1.pdb
