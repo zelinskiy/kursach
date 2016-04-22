@@ -111,9 +111,13 @@ namespace Kursach1
             Patronymic = Pnames[rnd.Next(Pnames.Count())];
             Birthday = new DateTime(rnd.Next(1900, 2000), rnd.Next(2, 11), 1);
             Article = rnd.Next(300);
-            Cell = rnd.Next(1000);
-            Sentence = new sentence(rnd.Next(0, 25), rnd.Next(0, 12));
+            Cell = rnd.Next(1000);            
             Imprisoned = new DateTime(rnd.Next(2000, 2016), rnd.Next(1, 12), 1);
+
+            Sentence = new sentence(0,0);
+            while (Imprisoned.Year + Sentence.Years < DateTime.Now.Year)
+                Sentence = new sentence(rnd.Next(0, 25), rnd.Next(0, 12));
+
             Hierarchy = Hnames[rnd.Next(Hnames.Count())];
 
         }

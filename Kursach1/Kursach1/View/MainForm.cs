@@ -29,7 +29,8 @@ namespace Kursach1
             { "Камера",p=>p.Cell.ToString() },
             { "Ост. дней",p=>p.SentenceDaysLeft.ToString() },
             { "Иерархич.",p=>p.Hierarchy },
-             { "Заключен.",p=>p.Imprisoned.DayOfWeek.ToString() },
+            { "Заключен",p=>p.Imprisoned.DayOfWeek.ToString() },
+            { "Срок(лет)",p=>p.Sentence.Years.ToString() },
         };
 
 
@@ -96,6 +97,10 @@ namespace Kursach1
                 case Keys.Enter:
                     SearchButton_Click(null, null);
                     break;
+                case Keys.Pause:
+                    MessageBox.Show("A.Y.E");
+                    PlayMuzon();
+                    break;
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
@@ -160,7 +165,7 @@ namespace Kursach1
         {
             if (PrisonersListView.SelectedItems.Count == 1)
             {
-                int myId = int.Parse(PrisonersListView.SelectedItems[0].SubItems[0].Text);
+                int myId = MyPrison.selectedPrisoners[PrisonersListView.SelectedIndices[0]].Id;
                 var myForm = new EditForm(this, myId);
                 myForm.Show();
             }
@@ -196,6 +201,14 @@ namespace Kursach1
 
 
 
+
+        private void PlayMuzon()
+        {
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+
+            player.SoundLocation = "Krug.dll";
+            player.Play();
+        }
         
 
 
