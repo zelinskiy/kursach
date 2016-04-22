@@ -100,11 +100,11 @@ namespace Kursach1.Model
 
 
 
-        public void Remove(string id)
+        public void Remove(int id)
         {
             try
             {
-                prisoners.RemoveAll(x => x.Id == int.Parse(id));
+                prisoners.RemoveAll(x => x.Id == id);
             }
             catch
             {

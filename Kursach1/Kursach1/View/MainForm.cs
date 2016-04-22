@@ -178,7 +178,8 @@ namespace Kursach1
         {
             if (PrisonersListView.SelectedItems.Count == 1)
             {
-                MyPrison.Remove(PrisonersListView.SelectedItems[0].SubItems[0].Text);
+                int myId = MyPrison.selectedPrisoners[PrisonersListView.SelectedIndices[0]].Id;
+                MyPrison.Remove(myId);
                 RefreshView(MyPrison.prisoners);
             }            
         }
