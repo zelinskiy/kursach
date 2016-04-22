@@ -23,6 +23,8 @@ namespace Kursach1
         public Dictionary<string, Func<Prisoner, string>> fields = new Dictionary<string, Func<Prisoner, string>>()
         {
             { "Фамилия",p=>p.SecondName },
+            { "Имя",p=>p.FirstName },
+            { "Отчество",p=>p.Patronymic },
             { "Номер",p=>p.Id.ToString() },
             { "Возраст",p=>p.Age.ToString() },
             { "Статья",p=>p.Article.ToString() },
@@ -205,9 +207,8 @@ namespace Kursach1
         private void PlayMuzon()
         {
             System.Media.SoundPlayer player = new System.Media.SoundPlayer();
-
-            player.SoundLocation = "Krug.dll";
-            player.Play();
+            try {player.SoundLocation = "Krug.dll";player.Play();}
+            catch(Exception e) { }            
         }
         
 
