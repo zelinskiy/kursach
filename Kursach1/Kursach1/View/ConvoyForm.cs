@@ -37,12 +37,12 @@ namespace Kursach1.View
 
         private void ConvoyButton_Click(object sender, EventArgs e)
         {
-            
-            
             try
             {
                 string cid = ConvoyToTextBox.Text;
-                MyPrison.Convoy(id, cid);
+                string NumOfConvoyers = ConvoyersNumTextBox.Text;
+                string Duration = DurationTextBox.Text;
+                MyPrison.Convoy(id, cid, NumOfConvoyers, Duration);
                 this.Close();
             }
             catch (ArgumentException ex)

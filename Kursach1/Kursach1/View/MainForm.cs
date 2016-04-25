@@ -229,10 +229,13 @@ namespace Kursach1
 
         private void ConvoyButton_Click(object sender, EventArgs e)
         {
-            int myId = MyPrison.selectedPrisoners[PrisonersListView.SelectedIndices[0]].Id;
-            var myForm = new ConvoyForm(MyPrison, myId);
-            myForm.Show();
-            myForm.FormClosed += MyForm_FormClosed;
+            if (PrisonersListView.SelectedItems.Count == 1)
+            {
+                int myId = MyPrison.selectedPrisoners[PrisonersListView.SelectedIndices[0]].Id;
+                var myForm = new ConvoyForm(MyPrison, myId);
+                myForm.Show();
+                myForm.FormClosed += MyForm_FormClosed;
+            }
         }
 
 
@@ -240,7 +243,12 @@ namespace Kursach1
         {
             RefreshView(MyPrison.selectedPrisoners);
         }
-        
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var myForm = new ViewConvoysForm(MyPrison);
+            myForm.Show();
+            myForm.FormClosed += MyForm_FormClosed;
+        }
     }
 }

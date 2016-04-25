@@ -23,6 +23,8 @@ namespace Kursach1.Model
 
 
         public Cells cells;
+
+        public List<Convoy> convoys = new List<Convoy>();
         
         
 
@@ -89,14 +91,14 @@ namespace Kursach1.Model
         public void Add(Prisoner p)
         {
             p.Id = generateId();
-            if(p.Cell < 0 || p.Cell > cells.cells.Count)
+            if (p.Cell == -1)
+            {
+                cells.Insert(p);
+            }
+            else if (p.Cell < 0 || p.Cell > cells.cells.Count)
             {
                 throw new ArgumentException("This cell is full");
-            }
-            if(p.Cell == -1)
-            {
-                cells.Insert(p);                
-            }
+            }            
             else
             {
                 cells.Insert(p, p.Cell);
@@ -225,12 +227,30 @@ namespace Kursach1.Model
 
 
 
-        public void Convoy(int prisonerId, string cellId)
+        public void Convoy(int prisonerId, string cellId, string convoyersNum, string duration)
         {
+
             int cid = int.Parse(cellId);
             Prisoner p = prisoners[prisoners.FindIndex(x => x.Id == prisonerId)];
+
+            ///////////////
+            convoys.Add(new Convoy()
+            {
+                Convoyed = p,
+                SourceCell = p.Cell,
+                DestinationCell = cid,
+
+                ConvoyersRequired = int.Parse(convoyersNum),
+
+                StartedAt = DateTime.Now,
+                MDuration = int.Parse(duration)
+            });
+            ////////////
+            
             p.Cell = cells.Insert(p, cid).Id;
             cells.RemovePrisoner(prisonerId);
+
+            
         }
 
 

@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Model\Cell.cs" />
     <Compile Include="Model\Cells.cs" />
+    <Compile Include="Model\Convoy.cs" />
     <Compile Include="Model\Prisoner.cs" />
     <Compile Include="Model\Prisoners.cs" />
     <Compile Include="View\AddForm.cs">
@@ -86,6 +87,12 @@
     <Compile Include="View\StatsForm.Designer.cs">
       <DependentUpon>StatsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ViewConvoysForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ViewConvoysForm.Designer.cs">
+      <DependentUpon>ViewConvoysForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="View\AddForm.resx">
       <DependentUpon>AddForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -109,6 +116,9 @@
     </Compile>
     <EmbeddedResource Include="View\StatsForm.resx">
       <DependentUpon>StatsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ViewConvoysForm.resx">
+      <DependentUpon>ViewConvoysForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="MainClassDiagram.cd" />
     <None Include="packages.config" />

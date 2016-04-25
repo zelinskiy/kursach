@@ -13,3 +13,4 @@ C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\bin\Debug\Ne
 C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\obj\Debug\Kursach1.View.EditForm.resources
 C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\obj\Debug\Kursach1.View.ConvoyForm.resources
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\obj\Debug\Kursach1.View.ViewConvoysForm.resources
