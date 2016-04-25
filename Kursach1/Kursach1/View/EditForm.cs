@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+//TODO: passing MyPrison as parameter, not the whole form
 namespace Kursach1.View
 {
     public partial class EditForm : AddForm
@@ -16,44 +18,65 @@ namespace Kursach1.View
 
         private int Id;
 
-        public Prisoners MyPrison;
+        public new Prisoners MyPrison;
 
-        private EditForm(MainForm p) : base(p) { }
+        private EditForm(Prisoners p) : base(p) { }
 
-        public EditForm(MainForm parent, int id): base(parent)
+        public EditForm(Prisoners Prison, int id): base(Prison)
         {
             Id = id;
-            MyPrison = parent.MyPrison;
+            MyPrison = Prison;
             this.InitializeComponent();
-            
 
-            Prisoner p = MyPrison.prisoners.First(x => x.Id == id);
+            LoadDataToInputFields();
+            CellBox.Enabled = false;
+
+            AddButton.Text = "Edit";
+        }
+
+
+        private void LoadDataToInputFields()
+        {
+            Prisoner p = MyPrison.prisoners.First(x => x.Id == Id);
 
             FirstNameTextBox.Text = p.FirstName;
             SecondNameTextBox.Text = p.SecondName;
             PatronymicTextBox.Text = p.Patronymic;
             BirthdayPicker.Value = p.Birthday;
-
             ArticleBox.Text = p.Article.ToString();
-            CellBox.Text = p.Cell.ToString();
+            CellBox.Text = p.Cell.ToString() + " (используйте Конвой)";
             SentenceYearsBox.Text = p.Sentence.Years.ToString();
             SentenceYearsBox.Text = p.Sentence.Months.ToString();
             ImprisonedDatePicker.Value = p.Imprisoned;
             HierarchyPlaceTextBox.Text = p.Hierarchy;
-
-            AddButton.Text = "Edit";
-
-
-
         }
+
 
         protected override void AddButton_Click(object sender, EventArgs e)
         {
-            MyPrison.Replace(Id, LoadPrisonerFromInput());
-            parent.RefreshView(MyPrison.prisoners);
-            this.Close();
+            try
+            {
+                MyPrison.Replace(Id, LoadPrisonerFromInput());
+                this.Close();
+            }
+            catch(ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
+
+        private void ConvoyButton_Click(object sender, EventArgs e)
+        {
+            var myForm = new ConvoyForm(MyPrison, Id);
+            myForm.Show();
+            myForm.FormClosed += MyForm_FormClosed;
         }
 
 
+        private void MyForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadDataToInputFields();
+        }
     }
 }

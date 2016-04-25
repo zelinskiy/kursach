@@ -111,7 +111,8 @@ namespace Kursach1
             Patronymic = Pnames[rnd.Next(Pnames.Count())];
             Birthday = new DateTime(rnd.Next(1900, 2000), rnd.Next(2, 11), 1);
             Article = rnd.Next(300);
-            Cell = rnd.Next(1000);            
+            //Cell = rnd.Next(1000);
+            Cell = -1;
             Imprisoned = new DateTime(rnd.Next(2000, 2016), rnd.Next(1, 12), 1);
 
             Sentence = new sentence(0,0);
@@ -145,6 +146,7 @@ namespace Kursach1
 
             Article = int.Parse(article);
             Cell = int.Parse(cell);
+
             Sentence = new sentence(int.Parse(sentenceYears), int.Parse(sentenceMonths));
             Imprisoned = imprisonedDate;
             Hierarchy = hierarchy;

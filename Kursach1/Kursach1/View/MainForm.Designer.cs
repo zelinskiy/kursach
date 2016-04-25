@@ -44,6 +44,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.ConvoyButton = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -137,7 +140,7 @@
             // 
             this.EditButton.Location = new System.Drawing.Point(168, 8);
             this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(98, 54);
+            this.EditButton.Size = new System.Drawing.Size(81, 54);
             this.EditButton.TabIndex = 9;
             this.EditButton.Text = "Изменить";
             this.EditButton.UseVisualStyleBackColor = true;
@@ -186,6 +189,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.ConvoyButton);
             this.groupBox1.Controls.Add(this.EditButton);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.AddPrisonerButton);
@@ -194,7 +199,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(272, 85);
+            this.groupBox1.Size = new System.Drawing.Size(346, 85);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             // 
@@ -214,13 +219,44 @@
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.TestDataButton);
             this.groupBox3.Controls.Add(this.ShowStatisticsButton);
             this.groupBox3.Location = new System.Drawing.Point(1083, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(105, 121);
+            this.groupBox3.Size = new System.Drawing.Size(105, 170);
             this.groupBox3.TabIndex = 16;
             this.groupBox3.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 109);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(92, 39);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Очистить";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // ConvoyButton
+            // 
+            this.ConvoyButton.Location = new System.Drawing.Point(255, 8);
+            this.ConvoyButton.Name = "ConvoyButton";
+            this.ConvoyButton.Size = new System.Drawing.Size(81, 54);
+            this.ConvoyButton.TabIndex = 14;
+            this.ConvoyButton.Text = "Конвой";
+            this.ConvoyButton.UseVisualStyleBackColor = true;
+            this.ConvoyButton.Click += new System.EventHandler(this.ConvoyButton_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label4.Location = new System.Drawing.Point(278, 64);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(32, 17);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "F10";
             // 
             // MainForm
             // 
@@ -260,6 +296,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button ConvoyButton;
     }
 }
 

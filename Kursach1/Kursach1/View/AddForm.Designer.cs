@@ -115,7 +115,8 @@
             this.CellBox.Name = "CellBox";
             this.CellBox.Size = new System.Drawing.Size(254, 22);
             this.CellBox.TabIndex = 8;
-            this.CellBox.Text = "101";
+            this.CellBox.Text = "-1";
+            this.CellBox.TextChanged += new System.EventHandler(this.CellBox_TextChanged);
             // 
             // BirthdayLabel
             // 

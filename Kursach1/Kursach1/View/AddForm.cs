@@ -8,15 +8,13 @@ namespace Kursach1.View
     public partial class AddForm : Form
     {
         public Prisoners MyPrison;
-        public MainForm parent;
 
-        public AddForm() { }
+        private AddForm() { }
 
 
-        public AddForm(MainForm parent)
+        public AddForm(Prisoners Prison)
         {
-            this.parent = parent;
-            MyPrison = parent.MyPrison;
+            MyPrison = Prison;
             InitializeComponent();
         }
 
@@ -72,9 +70,15 @@ namespace Kursach1.View
 
         protected virtual void AddButton_Click(object sender, EventArgs e)
         {
-            MyPrison.Add(LoadPrisonerFromInput());   
-            parent.RefreshView(MyPrison.prisoners);
-            this.Close();
+            try
+            {
+                MyPrison.Add(LoadPrisonerFromInput());
+                this.Close();
+            }
+            catch(ArgumentException ae)
+            {
+                MessageBox.Show(ae.Message);
+            }
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -83,6 +87,11 @@ namespace Kursach1.View
         }
 
         private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CellBox_TextChanged(object sender, EventArgs e)
         {
 
         }

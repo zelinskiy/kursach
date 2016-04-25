@@ -16,7 +16,7 @@ namespace Kursach1
     public partial class MainForm : Form
     {
 
-        public Prisoners MyPrison;
+        public Prisoners MyPrison = new Prisoners();
 
         public bool Ascending = false;
 
@@ -158,8 +158,9 @@ namespace Kursach1
 
         private void AddPrisonerButton_Click(object sender, EventArgs e)
         {
-            var myForm = new AddForm(this);
+            var myForm = new AddForm(MyPrison);
             myForm.Show();
+            myForm.FormClosed += MyForm_FormClosed;
         }
 
 
@@ -168,8 +169,9 @@ namespace Kursach1
             if (PrisonersListView.SelectedItems.Count == 1)
             {
                 int myId = MyPrison.selectedPrisoners[PrisonersListView.SelectedIndices[0]].Id;
-                var myForm = new EditForm(this, myId);
+                var myForm = new EditForm(MyPrison, myId);
                 myForm.Show();
+                myForm.FormClosed += MyForm_FormClosed;
             }
         }
 
@@ -179,9 +181,16 @@ namespace Kursach1
             if (PrisonersListView.SelectedItems.Count == 1)
             {
                 int myId = MyPrison.selectedPrisoners[PrisonersListView.SelectedIndices[0]].Id;
-                MyPrison.Remove(myId);
-                RefreshView(MyPrison.prisoners);
-            }            
+                try
+                {
+                    MyPrison.Remove(myId);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            RefreshView(MyPrison.selectedPrisoners);
         }
 
 
@@ -211,13 +220,27 @@ namespace Kursach1
             try {player.SoundLocation = "Krug.dll";player.Play();}
             catch(Exception e) { }            
         }
-        
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MyPrison.Clear();
+            RefreshView(MyPrison.prisoners);
+        }
+
+        private void ConvoyButton_Click(object sender, EventArgs e)
+        {
+            int myId = MyPrison.selectedPrisoners[PrisonersListView.SelectedIndices[0]].Id;
+            var myForm = new ConvoyForm(MyPrison, myId);
+            myForm.Show();
+            myForm.FormClosed += MyForm_FormClosed;
+        }
 
 
+        private void MyForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            RefreshView(MyPrison.selectedPrisoners);
+        }
         
 
-        
-
-        
     }
 }

@@ -21,6 +21,11 @@ namespace Kursach1.Model
 
         public List<Prisoner> prisoners = new List<Prisoner>();
 
+
+        public Cells cells;
+        
+        
+
         
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -35,7 +40,7 @@ namespace Kursach1.Model
             int length = 10;
             for (int i = 0; i < length; i++)
             {                
-                prisoners.Add(new Prisoner(generateId(), randGen));
+                Add(new Prisoner(generateId(), randGen));
             }
         }
 
@@ -57,11 +62,11 @@ namespace Kursach1.Model
             {
                 using (TextReader reader = new StreamReader(File.OpenRead(PrisonersListLocation)))
                 {
-                    prisoners = JsonConvert.DeserializeObject<List<Prisoner>>(reader.ReadLine());
+                    prisoners = JsonConvert.DeserializeObject<List<Prisoner>>(reader.ReadLine());                    
                 }
             }
             selectedPrisoners = prisoners;
-            
+            cells = new Cells(100, prisoners);
         }
 
 
@@ -77,9 +82,26 @@ namespace Kursach1.Model
             else return r;
         }
 
+
+        
+
+
         public void Add(Prisoner p)
         {
             p.Id = generateId();
+            if(p.Cell < 0 || p.Cell > cells.cells.Count)
+            {
+                throw new ArgumentException("This cell is full");
+            }
+            if(p.Cell == -1)
+            {
+                cells.Insert(p);                
+            }
+            else
+            {
+                cells.Insert(p, p.Cell);
+            }
+            
             prisoners.Add(p);
         }
 
@@ -102,15 +124,8 @@ namespace Kursach1.Model
 
         public void Remove(int id)
         {
-            try
-            {
-                prisoners.RemoveAll(x => x.Id == id);
-            }
-            catch
-            {
-                throw new ArgumentException();
-            }
-            
+            cells.RemovePrisoner(id);
+            prisoners.RemoveAll(x => x.Id == id);            
         }
 
 
@@ -158,36 +173,7 @@ namespace Kursach1.Model
             {
                 selectedPrisoners = prisoners.Where(x => f(x).ToLower().Contains(pattern.ToLower())).ToList();
             }
-                  
-            /*
-            switch (field)
-            {
-                case "":
-                    selectedPrisoners = prisoners;
-                    break;
-                case "0":
-                    selectedPrisoners = prisoners.Where(p=>p.Id.ToString() == pattern ).ToList();
-                    break;
-                case "1":
-                    selectedPrisoners = prisoners.Where(p => p.FirstName.ToString().Contains(pattern)).ToList();
-                    break;
-                case "2":
-                    selectedPrisoners = prisoners.Where(p => p.Age.ToString().Contains(pattern)).ToList();
-                    break;
-                case "3":
-                    selectedPrisoners = prisoners.Where(p => p.Article.ToString().Contains(pattern)).ToList();
-                    break;
-                case "4":
-                    selectedPrisoners = prisoners.Where(p => p.Cell.ToString().Contains(pattern)).ToList();
-                    break;
-                case "5":
-                    return selectedPrisoners.Where(p => p.SentenceDaysLeft.ToString().Contains(pattern)).ToList();
-                case "6":
-                    return selectedPrisoners.Where(p => p.Hierarchy.Contains(pattern)).ToList();
-                default:
-                    throw new ArgumentException("incorrect searchby field");
-            }
-            */
+
             return selectedPrisoners;
         }
 
@@ -219,6 +205,32 @@ namespace Kursach1.Model
                 return s;
             }            
             
+        }
+
+
+
+
+
+        public void Clear()
+        {
+            while (prisoners.Count != 0)
+            {
+                Remove(prisoners[0].Id);
+            }
+            selectedPrisoners = prisoners;
+        }
+
+
+
+
+
+
+        public void Convoy(int prisonerId, string cellId)
+        {
+            int cid = int.Parse(cellId);
+            Prisoner p = prisoners[prisoners.FindIndex(x => x.Id == prisonerId)];
+            p.Cell = cells.Insert(p, cid).Id;
+            cells.RemovePrisoner(prisonerId);
         }
 
 
