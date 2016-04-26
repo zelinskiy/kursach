@@ -15,3 +15,4 @@ C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\obj\Debug\Ku
 C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\obj\Debug\Kursach1.View.ConvoyForm.resources
 C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\obj\Debug\Kursach1.View.ViewConvoysForm.resources
 C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\obj\Debug\Kursach1.View.EditColumnsForm.resources
+C:\Users\Nik\Documents\GitHubVisualStudio\kursach\Kursach1\Kursach1\obj\Debug\Kursach1.View.AuthorizationForm.resources

@@ -231,6 +231,11 @@ namespace Kursach1.Model
         {
 
             int cid = int.Parse(cellId);
+            if (cells.cells[cid].IsFull)
+            {
+                throw new ArgumentException("selected cell is already full");
+            }
+
             Prisoner p = prisoners[prisoners.FindIndex(x => x.Id == prisonerId)];
 
             ///////////////

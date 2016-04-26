@@ -25,6 +25,8 @@ namespace Kursach1.View
             this.parent = parent;
 
             InitializeComponent();
+            SelectedColumnsListBox.MouseDoubleClick += new MouseEventHandler(SelectedColumnsListBox_DoubleClick);
+            NotSelectedColumnsListBox.MouseDoubleClick += new MouseEventHandler(NotSelectedColumnsListBox_DoubleClick);
 
             selFields = new Dictionary<string, Func<Prisoner, string>>();
             foreach(KeyValuePair<string, Func < Prisoner, string>> p in parent.selectedFields)
@@ -107,5 +109,17 @@ namespace Kursach1.View
 
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
+
+        private void SelectedColumnsListBox_DoubleClick(object sender, EventArgs e)
+        {
+            RemoveColumnButton_Click(null, null);
+        }
+
+        private void NotSelectedColumnsListBox_DoubleClick(object sender, EventArgs e)
+        {
+            RemoveColumnButton_Click(null, null);
+        }
+
     }
 }

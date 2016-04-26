@@ -139,6 +139,19 @@ namespace Kursach1
                 string hierarchy
             )
         {
+            if(firstName.Length == 0)
+            {
+                throw new ArgumentException("Name is too short!");
+            }
+            if (secondName.Length == 0)
+            {
+                throw new ArgumentException("Name is too short!");
+            }
+            if (patronimyc.Length == 0)
+            {
+                throw new ArgumentException("Name is too short!");
+            }
+
             FirstName = firstName;
             SecondName = secondName;
             Patronymic = patronimyc;
@@ -147,6 +160,11 @@ namespace Kursach1
             Article = int.Parse(article);
             Cell = int.Parse(cell);
 
+
+            if(int.Parse(sentenceMonths) < 0 || int.Parse(sentenceMonths) > 12)
+            {
+                throw new ArgumentException("incorrect sentence months");
+            }
             Sentence = new sentence(int.Parse(sentenceYears), int.Parse(sentenceMonths));
             Imprisoned = imprisonedDate;
             Hierarchy = hierarchy;

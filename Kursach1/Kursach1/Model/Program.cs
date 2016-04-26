@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Kursach1.Model;
+using Kursach1.View;
 
 namespace Kursach1
 {
@@ -31,7 +32,7 @@ namespace Kursach1
             Application.SetCompatibleTextRenderingDefault(false);
             Application.ApplicationExit += new EventHandler(OnApplicationExit);
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnApplicationExit);
-            Application.Run(new MainForm(MyPrison));
+            Application.Run(new AuthorizationForm(MyPrison));
             
         }
 

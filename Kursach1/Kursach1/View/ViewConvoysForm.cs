@@ -66,7 +66,7 @@ namespace Kursach1.View
         {
             //RowStyle rs = new RowStyle(SizeType.Absolute, 30F);
             RowStyle rs = new RowStyle(SizeType.AutoSize);
-            Control con1 = new ProgressBar() { Size = new Size(300, 20), Value = progress % 101 };
+            Control con1 = new ProgressBar() { Size = new Size(300, 20), Value = progress };
             Control con2 = new Label() { Text = text, Size = new Size(400, 20) };
 
             rows.Add(new MyRow() {

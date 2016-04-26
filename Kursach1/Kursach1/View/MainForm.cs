@@ -22,16 +22,13 @@ namespace Kursach1
 
         public Dictionary<string, Func<Prisoner, string>> selectedFields = new Dictionary<string, Func<Prisoner, string>>()
         {
-            { "Фамилия",p=>p.SecondName },
-            { "Имя",p=>p.FirstName },
-            { "Отчество",p=>p.Patronymic },
             { "Номер",p=>p.Id.ToString() },
+            { "Фамилия",p=>p.SecondName },        
             { "Возраст",p=>p.Age.ToString() },
             { "Статья",p=>p.Article.ToString() },
             { "Камера",p=>p.Cell.ToString() },
             { "Ост. дней",p=>p.SentenceDaysLeft.ToString() },
             { "Иерархич.",p=>p.Hierarchy },
-            { "Заключен",p=>p.Imprisoned.DayOfWeek.ToString() },
             { "Срок(лет)",p=>p.Sentence.Years.ToString() },
         };
 
@@ -47,7 +44,6 @@ namespace Kursach1
             { "Камера",p=>p.Cell.ToString() },
             { "Ост. дней",p=>p.SentenceDaysLeft.ToString() },
             { "Иерархич.",p=>p.Hierarchy },
-            { "Заключен",p=>p.Imprisoned.DayOfWeek.ToString() },
             { "Срок(лет)",p=>p.Sentence.Years.ToString() },
         };
         

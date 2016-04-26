@@ -59,7 +59,7 @@ namespace Kursach1.View
             // 
             // RemoveColumnButton
             // 
-            this.RemoveColumnButton.Location = new System.Drawing.Point(197, 189);
+            this.RemoveColumnButton.Location = new System.Drawing.Point(197, 156);
             this.RemoveColumnButton.Name = "RemoveColumnButton";
             this.RemoveColumnButton.Size = new System.Drawing.Size(75, 60);
             this.RemoveColumnButton.TabIndex = 3;
@@ -107,7 +107,7 @@ namespace Kursach1.View
             this.Controls.Add(this.SelectedColumnsListBox);
             this.Controls.Add(this.NotSelectedColumnsListBox);
             this.Name = "EditColumnsForm";
-            this.Text = "EditColumnsForm";
+            this.Text = "Изменить колонки";
             this.ResumeLayout(false);
             this.PerformLayout();
 
