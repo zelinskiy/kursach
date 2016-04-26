@@ -28,16 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.LoginButton = new System.Windows.Forms.Button();
             this.LoginBox = new System.Windows.Forms.TextBox();
             this.PasswordBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.COMConnectButton = new System.Windows.Forms.Button();
+            this.COMportBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // LoginButton
             // 
-            this.LoginButton.Location = new System.Drawing.Point(133, 141);
+            this.LoginButton.Location = new System.Drawing.Point(172, 141);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(75, 40);
             this.LoginButton.TabIndex = 0;
@@ -83,11 +88,45 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Пароль";
             // 
+            // serialPort1
+            // 
+            this.serialPort1.PortName = "COM4";
+            // 
+            // COMConnectButton
+            // 
+            this.COMConnectButton.Location = new System.Drawing.Point(87, 157);
+            this.COMConnectButton.Name = "COMConnectButton";
+            this.COMConnectButton.Size = new System.Drawing.Size(23, 24);
+            this.COMConnectButton.TabIndex = 5;
+            this.COMConnectButton.UseVisualStyleBackColor = true;
+            this.COMConnectButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // COMportBox
+            // 
+            this.COMportBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.COMportBox.Location = new System.Drawing.Point(57, 156);
+            this.COMportBox.Name = "COMportBox";
+            this.COMportBox.Size = new System.Drawing.Size(24, 24);
+            this.COMportBox.TabIndex = 6;
+            this.COMportBox.Text = "4";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 161);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 17);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "RFID";
+            // 
             // AuthorizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(358, 193);
+            this.ClientSize = new System.Drawing.Size(358, 205);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.COMportBox);
+            this.Controls.Add(this.COMConnectButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PasswordBox);
@@ -107,5 +146,9 @@
         private System.Windows.Forms.TextBox PasswordBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.Button COMConnectButton;
+        public System.Windows.Forms.TextBox COMportBox;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -82,7 +82,7 @@
             this.PrisonersListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.PrisonersListView.Location = new System.Drawing.Point(12, 210);
             this.PrisonersListView.Name = "PrisonersListView";
-            this.PrisonersListView.Size = new System.Drawing.Size(1176, 433);
+            this.PrisonersListView.Size = new System.Drawing.Size(958, 433);
             this.PrisonersListView.TabIndex = 3;
             this.PrisonersListView.UseCompatibleStateImageBehavior = false;
             this.PrisonersListView.View = System.Windows.Forms.View.Details;
@@ -226,12 +226,12 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.SearchButton);
             this.groupBox2.Controls.Add(this.SearchFieldComboBox);
             this.groupBox2.Controls.Add(this.IsStrictCheckBox);
             this.groupBox2.Controls.Add(this.SearchTextBox);
-            this.groupBox2.Location = new System.Drawing.Point(479, 12);
+            this.groupBox2.Location = new System.Drawing.Point(415, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(431, 85);
             this.groupBox2.TabIndex = 15;
@@ -243,7 +243,7 @@
             this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.TestDataButton);
             this.groupBox3.Controls.Add(this.ShowStatisticsButton);
-            this.groupBox3.Location = new System.Drawing.Point(1083, 12);
+            this.groupBox3.Location = new System.Drawing.Point(865, 12);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(105, 170);
             this.groupBox3.TabIndex = 16;
@@ -261,7 +261,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(328, 26);
+            this.button3.Location = new System.Drawing.Point(275, 19);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(81, 56);
             this.button3.TabIndex = 17;
@@ -272,7 +272,7 @@
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1200, 655);
+            this.ClientSize = new System.Drawing.Size(982, 655);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
