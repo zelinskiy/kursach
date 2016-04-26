@@ -47,7 +47,7 @@ namespace Kursach1.View
             }
             catch (ArgumentException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Проверьте данные.");
             }
             
         }

@@ -20,7 +20,7 @@ namespace Kursach1
 
         public bool Ascending = false;
 
-        public Dictionary<string, Func<Prisoner, string>> fields = new Dictionary<string, Func<Prisoner, string>>()
+        public Dictionary<string, Func<Prisoner, string>> selectedFields = new Dictionary<string, Func<Prisoner, string>>()
         {
             { "Фамилия",p=>p.SecondName },
             { "Имя",p=>p.FirstName },
@@ -34,6 +34,26 @@ namespace Kursach1
             { "Заключен",p=>p.Imprisoned.DayOfWeek.ToString() },
             { "Срок(лет)",p=>p.Sentence.Years.ToString() },
         };
+
+        
+        public Dictionary<string, Func<Prisoner, string>> allFields = new Dictionary<string, Func<Prisoner, string>>()
+        {
+            { "Фамилия",p=>p.SecondName },
+            { "Имя",p=>p.FirstName },
+            { "Отчество",p=>p.Patronymic },
+            { "Номер",p=>p.Id.ToString() },
+            { "Возраст",p=>p.Age.ToString() },
+            { "Статья",p=>p.Article.ToString() },
+            { "Камера",p=>p.Cell.ToString() },
+            { "Ост. дней",p=>p.SentenceDaysLeft.ToString() },
+            { "Иерархич.",p=>p.Hierarchy },
+            { "Заключен",p=>p.Imprisoned.DayOfWeek.ToString() },
+            { "Срок(лет)",p=>p.Sentence.Years.ToString() },
+        };
+        
+
+
+
 
 
 
@@ -62,7 +82,7 @@ namespace Kursach1
 
             
 
-            string[] fieldNames = fields.Keys.ToArray();
+            string[] fieldNames = selectedFields.Keys.ToArray();
 
             for(int i=0; i< fieldNames.Length; i++)
             {
@@ -75,11 +95,12 @@ namespace Kursach1
             SearchFieldComboBox.SelectedIndex = 0;
 
             MyPrison.Load();
-            RefreshView(MyPrison.prisoners);
-
-            
+            RefreshView(MyPrison.prisoners);           
 
         }
+
+
+        
 
 
         
@@ -123,7 +144,7 @@ namespace Kursach1
             {
                 List<string> row = new List<string>();
 
-                foreach(Func<Prisoner, string> f in fields.Values)
+                foreach(Func<Prisoner, string> f in selectedFields.Values)
                 {
                     row.Add(f(p));
                 }
@@ -138,7 +159,7 @@ namespace Kursach1
 
         private void ColumnClick(object o, ColumnClickEventArgs e)
         {
-            Func<Prisoner, string> field = fields.Values.ToList()[e.Column];
+            Func<Prisoner, string> field = selectedFields.Values.ToList()[e.Column];
             RefreshView(MyPrison.OrderBy(field, Ascending));
             Ascending = !Ascending;
         }
@@ -197,7 +218,7 @@ namespace Kursach1
         private void SearchButton_Click(object sender, EventArgs e)
         {
             string pattern = SearchTextBox.Text;
-            Func<Prisoner, string> field = fields.Values.ToList()[SearchFieldComboBox.SelectedIndex];
+            Func<Prisoner, string> field = selectedFields.Values.ToList()[SearchFieldComboBox.SelectedIndex];
             bool strict = IsStrictCheckBox.Checked;
             RefreshView(MyPrison.SearchBy(field, pattern, strict));
         }
@@ -244,11 +265,36 @@ namespace Kursach1
             RefreshView(MyPrison.selectedPrisoners);
         }
 
+
+        public void ReloadCols()
+        {
+            string[] fieldNames = selectedFields.Keys.ToArray();
+
+            PrisonersListView.Columns.Clear();
+            for (int i = 0; i < fieldNames.Length; i++)
+            {
+                PrisonersListView.Columns.Add(fieldNames[i], 150);
+            }
+        }
+
+        private void colsEditForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ReloadCols();
+            RefreshView(MyPrison.selectedPrisoners);
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             var myForm = new ViewConvoysForm(MyPrison);
             myForm.Show();
             myForm.FormClosed += MyForm_FormClosed;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var colsEditForm = new EditColumnsForm(this);
+            colsEditForm.Show();
+            colsEditForm.FormClosed += colsEditForm_FormClosed;
         }
     }
 }

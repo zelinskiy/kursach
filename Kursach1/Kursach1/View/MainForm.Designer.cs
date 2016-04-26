@@ -42,11 +42,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.ConvoyButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.ConvoyButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -199,9 +200,29 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(433, 85);
+            this.groupBox1.Size = new System.Drawing.Size(257, 159);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(87, 99);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(81, 54);
+            this.button2.TabIndex = 17;
+            this.button2.Text = "Обзор Конвоев";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // ConvoyButton
+            // 
+            this.ConvoyButton.Location = new System.Drawing.Point(0, 99);
+            this.ConvoyButton.Name = "ConvoyButton";
+            this.ConvoyButton.Size = new System.Drawing.Size(81, 54);
+            this.ConvoyButton.TabIndex = 14;
+            this.ConvoyButton.Text = "Новый Конвой";
+            this.ConvoyButton.UseVisualStyleBackColor = true;
+            this.ConvoyButton.Click += new System.EventHandler(this.ConvoyButton_Click);
             // 
             // groupBox2
             // 
@@ -238,30 +259,21 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // ConvoyButton
+            // button3
             // 
-            this.ConvoyButton.Location = new System.Drawing.Point(255, 8);
-            this.ConvoyButton.Name = "ConvoyButton";
-            this.ConvoyButton.Size = new System.Drawing.Size(81, 54);
-            this.ConvoyButton.TabIndex = 14;
-            this.ConvoyButton.Text = "Новый Конвой";
-            this.ConvoyButton.UseVisualStyleBackColor = true;
-            this.ConvoyButton.Click += new System.EventHandler(this.ConvoyButton_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(342, 8);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(81, 54);
-            this.button2.TabIndex = 17;
-            this.button2.Text = "Обзор Конвоев";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button3.Location = new System.Drawing.Point(916, 25);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(81, 56);
+            this.button3.TabIndex = 17;
+            this.button3.Text = "Изменить колонки";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1200, 655);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -299,6 +311,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button ConvoyButton;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
 

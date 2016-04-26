@@ -44,7 +44,7 @@ namespace Kursach1.View
             PatronymicTextBox.Text = p.Patronymic;
             BirthdayPicker.Value = p.Birthday;
             ArticleBox.Text = p.Article.ToString();
-            CellBox.Text = p.Cell.ToString() + " (используйте Конвой)";
+            CellBox.Text = p.Cell.ToString();
             SentenceYearsBox.Text = p.Sentence.Years.ToString();
             SentenceYearsBox.Text = p.Sentence.Months.ToString();
             ImprisonedDatePicker.Value = p.Imprisoned;
